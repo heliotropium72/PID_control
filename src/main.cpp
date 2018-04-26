@@ -37,9 +37,10 @@ int main(int argc, char *argv[])
   // Proportional: Strength reaction
   // Integral: Counterweight biases
   // Differential: Dampen the oscillation
-  double init_Kp = atof(argv[1]);
-  double init_Ki = atof(argv[2]);
-  double init_Kd = atof(argv[3]);
+  // uncomment for parameter tuning; fixed values only for submission
+  double init_Kp = -2;//atof(argv[1]);
+  double init_Ki = 0;// atof(argv[2]);
+  double init_Kd = -40;// atof(argv[3]);
   std::cout << "Input: Kp=" << init_Kp << " Ki=" << init_Ki << " Kd=" << init_Kd << std::endl;
   pid.Init(init_Kp, init_Ki, init_Kd);
 
@@ -74,7 +75,7 @@ int main(int argc, char *argv[])
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
-		  msgJson["throttle"] = 0.3;//0.3;
+		  msgJson["throttle"] = 0.3;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);

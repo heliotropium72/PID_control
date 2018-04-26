@@ -77,6 +77,9 @@ The values were chosen empirically by testing different combinations. In theory,
 -2.25 | 0 | -5 | 0.2 | finishes track inside lines
 -2.25 | 0 | -10 | 0.2 | finishes track inside lines
 -3 | -0.001 | -10 | 0.2 | finishes track inside lines
+-3 | -0.001 | -10 | 0.3 | falls of bridge after oscillation
+-3 | -0.001 | -30 | 0.3 | finishes track (but overshoots)
+-2 | 0 | -40 | 0.3 | finishes tracks inside lines
 
-
-For small enough throttles, the car stays savely on track.
+The idealy values depend strongly on the throttle.
+For a throttle of 0.3, the selected values are Kp=-2, Ki=0, Kd=-40
