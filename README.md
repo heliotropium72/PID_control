@@ -55,7 +55,28 @@ where Kp, Ki and Kd are the values for the proportional, integral and differenti
 Kp controls how strong the PID reacts, Ki can balance biases in the measurements and Kd dampens the oscillation of the steering angle around the optimal value.
 The values were chosen empirically by testing different combinations. In theory, it is more efficient to use optimization algorithms like Twiggle.
 
-| Kp | Ki | Kd | Observation |
-|:--:|:--:|:--:|:----:|
--1 | 0 | 0 | drives generally correctly, but strong oscillation and eventual overshooting
--0.8 | 0 | 0 |
+| Kp | Ki | Kd | throttle | Observation |
+|:--:|:--:|:--:|:--:|:----:|
+-1 | 0 | 0 | 0.1 |drives generally correctly, but strong oscillation and eventual overshooting
+-0.8 | 0 | 0 | 0.1 |
+-1 | -0.01 | 0 | 0.1 | overshoots immediately
+-1 | -0.001 | 0 | 0.1 | smoother
+-3 | 0 | -0.5 | 0.1 | smooth, also in the curves
+| | |0.2| fails track
+-3 | 0 | -1 | 0.2 | finishes track but slight overshooting
+-2 | 0 | -1 | 0.2 | finishes track inside lines
+-2 | -0.05 | -1 | 0.2 | immediately off-track
+-2 | -0.01 | -1 | 0.2 | immediately off-track
+-2 | -0.001 | -1 | 0.2 | almost finishes track; strong oscillation in the curves; more stable on straight lines
+-1.5 | 0 | -1 | 0.2 | finishes track inside lines, more oscillation
+-2.25 | 0 | -1 | 0.2 | finishes track
+-2.25 | 0 | -1.5 | 0.2 | finishes track inside lines
+-2.25 | 0 | -2 | 0.2 | finishes track inside lines
+-2.25 | 0 | -3 | 0.2 | finishes track inside lines
+-2.25 | 0 | -4 | 0.2 | finishes track inside lines
+-2.25 | 0 | -5 | 0.2 | finishes track inside lines
+-2.25 | 0 | -10 | 0.2 | finishes track inside lines
+-3 | -0.001 | -10 | 0.2 | finishes track inside lines
+
+
+For small enough throttles, the car stays savely on track.
