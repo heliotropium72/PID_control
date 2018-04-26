@@ -37,9 +37,10 @@ int main(int argc, char *argv[])
   // Proportional: Strength reaction
   // Integral: Counterweight biases
   // Differential: Dampen the oscillation
-  double init_Kp = atof(argv[1]); // Proportional: how hard to steer back
-  double init_Ki = atof(argv[2]); // Integral: Biases?
-  double init_Kd = atof(argv[3]); // Differntial: Oscillation
+  double init_Kp = atof(argv[1]);
+  double init_Ki = atof(argv[2]);
+  double init_Kd = atof(argv[3]);
+  std::cout << "Input: Kp=" << init_Kp << " Ki= " << init_Ki << " Kd= " << init_Kd << std::endl;
   pid.Init(init_Kp, init_Ki, init_Kd);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
