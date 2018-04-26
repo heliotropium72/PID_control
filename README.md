@@ -50,7 +50,12 @@ for instructions and the project rubric.
 In this project a PID control for a car's steering angle is implemented.
 The main task is choosing the the parameterization.
 steering angle = Kp * CTE + Ki * CTE_total + Kd * CTE_diff
-where Kp, Ki and Kd are the values for the propotional, integral and differential part and CTE stands for cross track error
+where Kp, Ki and Kd are the values for the proportional, integral and differential part and CTE stands for cross track error
 
 Kp controls how strong the PID reacts, Ki can balance biases in the measurements and Kd dampens the oscillation of the steering angle around the optimal value.
-The values were chosen empirically by testing different combinations.
+The values were chosen empirically by testing different combinations. In theory, it is more efficient to use optimization algorithms like Twiggle.
+
+| Kp | Ki | Kd | Observation |
+|:--:|:--:|:--:|:----:|
+-1 | 0 | 0 | drives generally correctly, but strong oscillation and eventual overshooting
+-0.8 | 0 | 0 |
